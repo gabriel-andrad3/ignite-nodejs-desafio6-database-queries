@@ -17,7 +17,7 @@ export class GamesRepository implements IGamesRepository {
       .createQueryBuilder()
       .select("game")
       .from(Game, "game")
-      .where("game.title ILIKE '%:param%'", { param })
+      .where("game.title ILIKE :param", { param: `%${param}%` })
       .getMany();
       // Complete usando query builder
   }
